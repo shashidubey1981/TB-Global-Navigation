@@ -1,0 +1,38 @@
+.bag {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  color: var(--text-primary);
+  transition: opacity 0.2s;
+  width: 2.5rem;
+  height: 2.5rem;
+
+  &:hover {
+    opacity: 0.7;
+  }
+
+  &__icon {
+    font-size: 1.25rem;
+  }
+
+  &__badge {
+    position: absolute;
+    top: 0.25rem;
+    right: 0.25rem;
+    background: var(--accent-color);
+    color: white;
+    border-radius: 50%;
+    width: 1.125rem;
+    height: 1.125rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.625rem;
+    font-weight: 600;
+  }
+}

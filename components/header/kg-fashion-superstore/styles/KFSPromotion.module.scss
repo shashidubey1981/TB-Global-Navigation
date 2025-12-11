@@ -1,0 +1,27 @@
+.promotionBar {
+  width: 100%;
+  background-color: #763030;
+  color: #ffffff;
+  padding: 0.75rem 0;
+  text-align: center;
+
+}
+
+.promotionContent {
+  margin: 0 auto;
+  padding: 0 1rem;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
+  letter-spacing: .1em;
+}
+
+.promotionLink {
+  color: #ffffff;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.promotionLink:hover {
+  opacity: 0.8;
+}

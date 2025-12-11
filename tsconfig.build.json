@@ -1,0 +1,28 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": "./",
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "noEmit": false,
+    "module": "esnext",
+    "moduleResolution": "bundler"
+  },
+  "include": [
+    "index.ts",
+    "src/index.ts",
+    "components/**/*",
+    "lib/**/*",
+    "types/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    ".next",
+    "app",
+    "**/*.test.ts",
+    "**/*.test.tsx"
+  ]
+}

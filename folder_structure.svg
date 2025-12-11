@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="345.0" height="1820" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .folder-text {
+        font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+        font-size: 13px;
+        fill: #333;
+      }
+      .root-text {
+        font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+        font-size: 16px;
+        font-weight: bold;
+        fill: #1a1a1a;
+      }
+      .folder-name {
+        fill: #0066cc;
+      }
+    </style>
+  </defs>
+  <rect width="345.0" height="1820" fill="#ffffff"/>
+  <text x="30" y="46" class="root-text">tb-global-navigation</text>
+  <text x="30" y="82.6" class="folder-text">├── app/</text>
+  <text x="30" y="104.6" class="folder-text">│   ├── app/</text>
+  <text x="30" y="126.6" class="folder-text">│   └── globals.scss</text>
+  <text x="30" y="148.6" class="folder-text">├── components/</text>
+  <text x="30" y="170.6" class="folder-text">│   ├── components/</text>
+  <text x="30" y="192.6" class="folder-text">│   ├── footer/</text>
+  <text x="30" y="214.6" class="folder-text">│   │   ├── footer/</text>
+  <text x="30" y="236.6" class="folder-text">│   │   ├── jos-a-bank/</text>
+  <text x="30" y="258.6" class="folder-text">│   │   │   ├── jos-a-bank/</text>
+  <text x="30" y="280.6" class="folder-text">│   │   │   ├── styles/</text>
+  <text x="30" y="302.6" class="folder-text">│   │   │   │   ├── styles/</text>
+  <text x="30" y="324.6" class="folder-text">│   │   │   └── index.ts</text>
+  <text x="30" y="346.6" class="folder-text">│   │   ├── kg-fashion-superstore/</text>
+  <text x="30" y="368.6" class="folder-text">│   │   │   ├── kg-fashion-superstore/</text>
+  <text x="30" y="390.6" class="folder-text">│   │   │   ├── styles/</text>
+  <text x="30" y="412.6" class="folder-text">│   │   │   │   ├── styles/</text>
+  <text x="30" y="434.6" class="folder-text">│   │   │   └── index.ts</text>
+  <text x="30" y="456.6" class="folder-text">│   │   ├── mens-wearhouse/</text>
+  <text x="30" y="478.6" class="folder-text">│   │   │   ├── mens-wearhouse/</text>
+  <text x="30" y="500.6" class="folder-text">│   │   │   ├── styles/</text>
+  <text x="30" y="522.6" class="folder-text">│   │   │   │   ├── styles/</text>
+  <text x="30" y="544.6" class="folder-text">│   │   │   └── index.ts</text>
+  <text x="30" y="566.6" class="folder-text">│   │   ├── moores/</text>
+  <text x="30" y="588.6" class="folder-text">│   │   │   ├── moores/</text>
+  <text x="30" y="610.6" class="folder-text">│   │   │   ├── styles/</text>
+  <text x="30" y="632.6" class="folder-text">│   │   │   │   ├── styles/</text>
+  <text x="30" y="654.6" class="folder-text">│   │   │   └── index.ts</text>
+  <text x="30" y="676.6" class="folder-text">│   │   ├── tailoredbrands/</text>
+  <text x="30" y="698.6" class="folder-text">│   │   │   ├── tailoredbrands/</text>
+  <text x="30" y="720.6" class="folder-text">│   │   │   ├── styles/</text>
+  <text x="30" y="742.6" class="folder-text">│   │   │   │   ├── styles/</text>
+  <text x="30" y="764.6" class="folder-text">│   │   │   └── index.ts</text>
+  <text x="30" y="786.6" class="folder-text">│   │   ├── Footer.tsx</text>
+  <text x="30" y="808.6" class="folder-text">│   │   └── index.ts</text>
+  <text x="30" y="830.6" class="folder-text">│   └── header/</text>
+  <text x="30" y="852.6" class="folder-text">│       └── header/</text>
+  <text x="30" y="874.6" class="folder-text">│       ├── jos-a-bank/</text>
+  <text x="30" y="896.6" class="folder-text">│       │   ├── jos-a-bank/</text>
+  <text x="30" y="918.6" class="folder-text">│       │   ├── styles/</text>
+  <text x="30" y="940.6" class="folder-text">│       │   │   ├── styles/</text>
+  <text x="30" y="962.6" class="folder-text">│       │   └── index.ts</text>
+  <text x="30" y="984.6" class="folder-text">│       ├── kg-fashion-superstore/</text>
+  <text x="30" y="1006.6" class="folder-text">│       │   ├── kg-fashion-superstore/</text>
+  <text x="30" y="1028.6" class="folder-text">│       │   ├── styles/</text>
+  <text x="30" y="1050.6" class="folder-text">│       │   │   ├── styles/</text>
+  <text x="30" y="1072.6" class="folder-text">│       │   └── index.ts</text>
+  <text x="30" y="1094.6" class="folder-text">│       ├── mens-wearhouse/</text>
+  <text x="30" y="1116.6" class="folder-text">│       │   ├── mens-wearhouse/</text>
+  <text x="30" y="1138.6" class="folder-text">│       │   ├── styles/</text>
+  <text x="30" y="1160.6" class="folder-text">│       │   │   ├── styles/</text>
+  <text x="30" y="1182.6" class="folder-text">│       │   └── index.ts</text>
+  <text x="30" y="1204.6" class="folder-text">│       ├── moores/</text>
+  <text x="30" y="1226.6" class="folder-text">│       │   ├── moores/</text>
+  <text x="30" y="1248.6" class="folder-text">│       │   ├── styles/</text>
+  <text x="30" y="1270.6" class="folder-text">│       │   │   ├── styles/</text>
+  <text x="30" y="1292.6" class="folder-text">│       │   └── index.ts</text>
+  <text x="30" y="1314.6" class="folder-text">│       ├── tailoredbrands/</text>
+  <text x="30" y="1336.6" class="folder-text">│       │   ├── tailoredbrands/</text>
+  <text x="30" y="1358.6" class="folder-text">│       │   ├── styles/</text>
+  <text x="30" y="1380.6" class="folder-text">│       │   │   ├── styles/</text>
+  <text x="30" y="1402.6" class="folder-text">│       │   └── index.ts</text>
+  <text x="30" y="1424.6" class="folder-text">│       ├── Header.tsx</text>
+  <text x="30" y="1446.6" class="folder-text">│       └── index.ts</text>
+  <text x="30" y="1468.6" class="folder-text">├── lib/</text>
+  <text x="30" y="1490.6" class="folder-text">│   ├── lib/</text>
+  <text x="30" y="1512.6" class="folder-text">├── src/</text>
+  <text x="30" y="1534.6" class="folder-text">│   ├── src/</text>
+  <text x="30" y="1556.6" class="folder-text">│   └── index.ts</text>
+  <text x="30" y="1578.6" class="folder-text">├── types/</text>
+  <text x="30" y="1600.6" class="folder-text">│   ├── types/</text>
+  <text x="30" y="1622.6" class="folder-text">├── utils/</text>
+  <text x="30" y="1644.6" class="folder-text">│   ├── utils/</text>
+  <text x="30" y="1666.6" class="folder-text">├── README.md</text>
+  <text x="30" y="1688.6" class="folder-text">├── index.ts</text>
+  <text x="30" y="1710.6" class="folder-text">├── middleware.ts</text>
+  <text x="30" y="1732.6" class="folder-text">├── next.config.ts</text>
+  <text x="30" y="1754.6" class="folder-text">├── package.json</text>
+  <text x="30" y="1776.6" class="folder-text">└── tsconfig.json</text>
+</svg>

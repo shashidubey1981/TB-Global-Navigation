@@ -1,0 +1,84 @@
+.header {
+  background: var(--header-bg);
+  border-bottom: 1px solid var(--border-color);
+  width: 100%;
+
+  &__desktop {
+    display: block;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  &__mobile {
+    display: none;
+
+    @media (max-width: 768px) {
+      display: block;
+    }
+  }
+
+  &__row {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &[data-row="promotion"] {
+      background: var(--accent-color);
+      color: white;
+      justify-content: center;
+    }
+
+    &[data-row="search-locator"] {
+      justify-content: space-between;
+      padding: 1rem 1.5rem;
+    }
+
+    &[data-row="logo-search"] {
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.5rem;
+      gap: 2rem;
+    }
+
+    &[data-row="navigation"] {
+      padding: 0;
+    }
+
+    &[data-row="mobile-top"] {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      padding: 0.75rem 1rem;
+      flex-wrap: nowrap;
+    }
+
+    &[data-row="mobile-search"] {
+      padding: 0.75rem 1rem;
+      border-top: 1px solid var(--border-color);
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}
+
+// Sticky header for mobile
+@media (max-width: 768px) {
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--header-bg);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+}
