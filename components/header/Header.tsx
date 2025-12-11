@@ -16,12 +16,11 @@ export interface HeaderProps {
 }
 
 export default async function Header({ locale, brandName }: HeaderProps) {
-    const normalizedBrandName = brandName.toLowerCase().replace(/[_\s-]/g, '-');
+    console.log('normalizedBrandName', brandName);
     const refUids = [
         ...navigationReferenceIncludes
     ]
-    console.log('normalizedBrandName', normalizedBrandName);
-    const webConfigRes = await getHeaderEntries<EmbeddedItem>(normalizedBrandName, locale, refUids, {});
+    const webConfigRes = await getHeaderEntries<EmbeddedItem>(brandName, locale, refUids, {});
     console.log('result', webConfigRes);
     // Extract the first entry from the array and cast to any to allow different header types
     const headerData = webConfigRes?.[0] as any;
@@ -34,7 +33,7 @@ export default async function Header({ locale, brandName }: HeaderProps) {
     //   getHeaderData(locale as Locale, brandName)
     // ]);
 
-    switch (normalizedBrandName) {
+    switch (brandName) {
         case 'jos_a_bank':
             return <JBHeader data={headerData} />;;
         case 'mens_wearhouse':

@@ -46,7 +46,7 @@ const TMWHeader: React.FC<HeaderProps> = ({ data }: HeaderProps) => {
 
           {/* Row 2: Search Locator + Account/Wishlist/Bag + Locale Switcher */}
           <div className={styles.header__row} data-row="search-locator">
-            <TMWSearchLocator/>
+            <TMWSearchLocator location={data?.store_locator?.label} />
             <div className={styles.header__actions}>
               <TMWAccount label={data?.account?.label} onClick={handleAccountClick}/>
               <TMWWishlist count={0} />
@@ -78,7 +78,7 @@ const TMWHeader: React.FC<HeaderProps> = ({ data }: HeaderProps) => {
             <TMWBurgerMenu isOpen={isMenuOpen} onToggle={() => setIsMenuOpen(!isMenuOpen)}>
               <TMWNavigation items={data?.main_navigation} />
             </TMWBurgerMenu>
-            <TMWSearchLocator />
+            <TMWSearchLocator location={data?.store_locator?.label} />
             <TMWLogo url={data?.logo?.link} alt={data?.logo?.alt_text} link={data?.logo?.link} />
             <div className={styles.header__actions}>
               <TMWWishlist count={0} />
