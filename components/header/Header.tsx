@@ -3,7 +3,7 @@ import JBHeader from './jos-a-bank/JBHeader';
 import KFSHeader from './kg-fashion-superstore/KFSHeader';
 import MOOHeader from './moores/MOOHeader';
 import TBHeader from './tailoredbrands/TBHeader';
-import { getHeaderData } from '@/lib/contentstack-service';
+// import { usePersonalization } from '@/context'
 import { getHeaderEntries, navigationReferenceIncludes } from '@/services';
 import { onEntryChange } from '@/config'
 import type { Locale } from '@/lib/i18n';

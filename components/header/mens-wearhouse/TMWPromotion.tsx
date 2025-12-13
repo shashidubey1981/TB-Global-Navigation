@@ -2,15 +2,11 @@
 
 import Link from 'next/link';
 import styles from './styles/TMWPromotion.module.scss';
+import { App } from '@/types'
 
-interface PromotionProps {
-    enabled?: boolean;
-    text?: string;
-    link?: string;
-}
-
-export default function TMWPromotion({ enabled = true, text, link }: PromotionProps) {
-    if (!enabled || !text) return null;
+export default function TMWPromotion(data: Partial<App.PromotionBar> = {}) {
+  const { enabled, text, link, $ } = data  
+  if (!enabled || !text) return null;
 
     const content = link ? (
         <Link href={link} className={styles.promotionLink}>

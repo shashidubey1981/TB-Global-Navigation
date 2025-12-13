@@ -34,6 +34,7 @@
     "sass": "^1.94.2"
   },
   "devDependencies": {
+    "@types/lodash": "^4.17.7",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

@@ -24,8 +24,7 @@ export const navigationReferenceIncludes = [
     'main_navigation',
     'main_navigation.items.link',
     'main_navigation.items.mega_menu',
-    'main_navigation.items.mega_menu.sections.link',
-    'main_navigation.items.mega_menu.sections.links'
+    'main_navigation.items.mega_menu.sections.link'
 ]
 
 export const footerReferenceIncludes = [

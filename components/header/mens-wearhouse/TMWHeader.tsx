@@ -39,9 +39,7 @@ const TMWHeader: React.FC<HeaderProps> = ({ data }: HeaderProps) => {
         <div className={styles.header__desktop}>
           {/* Row 1: Promotion */}
           <div className={styles.header__row} data-row="promotion">
-            <TMWPromotion enabled={data?.promotion_bar?.enabled}
-                       text={data?.promotion_bar?.text}
-                       link={data?.promotion_bar?.link} />
+            <TMWPromotion {...data?.promotion_bar} />
           </div>
 
           {/* Row 2: Search Locator + Account/Wishlist/Bag + Locale Switcher */}
@@ -56,7 +54,7 @@ const TMWHeader: React.FC<HeaderProps> = ({ data }: HeaderProps) => {
 
           {/* Row 3: Logo + Search */}
           <div className={styles.header__row} data-row="logo-search">
-            <TMWLogo url={data?.logo?.link} alt={data?.logo?.alt_text} link={data?.logo?.link} />
+            <TMWLogo {...data?.logo} />
             <TMWSearch onSearch={handleSearch} placeholder={data?.search?.placeholder} />
           </div>
 
@@ -69,9 +67,7 @@ const TMWHeader: React.FC<HeaderProps> = ({ data }: HeaderProps) => {
         {/* Mobile View - 3 Rows */}
         <div className={styles.header__mobile}>
         <div className={styles.header__row} data-row="promotion">
-            <TMWPromotion enabled={data?.promotion_bar?.enabled}
-                       text={data?.promotion_bar?.text}
-                       link={data?.promotion_bar?.link} />
+          <TMWPromotion {...data?.promotion_bar} />
           </div>
           {/* Row 1: Burger + Locator + Logo + Wishlist + Bag */}
           <div className={styles.header__row} data-row="mobile-top">
@@ -79,7 +75,7 @@ const TMWHeader: React.FC<HeaderProps> = ({ data }: HeaderProps) => {
               <TMWNavigation items={data?.main_navigation} />
             </TMWBurgerMenu>
             <TMWSearchLocator location={data?.store_locator?.label} />
-            <TMWLogo url={data?.logo?.link} alt={data?.logo?.alt_text} link={data?.logo?.link} />
+            <TMWLogo {...data?.logo} />
             <div className={styles.header__actions}>
               <TMWWishlist count={0} />
               <TMWBag count={0} />
