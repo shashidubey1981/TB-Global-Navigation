@@ -5,9 +5,7 @@
   "main": "./index.ts",
   "types": "./index.ts",
   "exports": {
-    ".": "./index.ts",
-    "./header": "./components/header/index.ts",
-    "./footer": "./components/footer/index.ts"
+    ".": "./index.ts"
   },
   "files": [
     "dist",
