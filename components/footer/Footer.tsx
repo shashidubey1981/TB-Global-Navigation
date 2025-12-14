@@ -13,25 +13,23 @@ export interface FooterProps {
 
 export default async function Footer({ locale, brandName }: FooterProps) {
     const normalizedBrandName = brandName.toLowerCase().replace(/[_\s-]/g, '-');
-    // Fetch header and footer data from Contentstack with locale
-    const [headerData] = await Promise.all([
-      getFooterData(locale as Locale, brandName)
-    ]);
+    // Fetch footer data from Contentstack with locale
+    const footerData = (await getFooterData(locale as Locale, brandName)) as Record<string, unknown>;
 
     switch (normalizedBrandName) {
         case 'jos-a-bank':
-            return <JBFooter data={headerData} />;;
+            return <JBFooter data={footerData} />;
         case 'mens-wearhouse':
-            return <TMWFooter data={headerData} />;
+            return <TMWFooter data={footerData} />;
         case 'kg-fashion-superstore':
-            return <KFSFooter data={headerData} />;
+            return <KFSFooter data={footerData} />;
         case 'moores':
-            return <MOOFooter data={headerData} />;
+            return <MOOFooter data={footerData} />;
         case 'tailoredbrands':
-            return <TBFooter data={headerData} />;
+            return <TBFooter data={footerData} />;
         default: // Tailored Brands
-            console.warn(`No header component found for brand: ${brandName}. Falling back to mens-wearhouse.`);
-            return <TMWFooter data={headerData} />;
+            console.warn(`No footer component found for brand: ${brandName}. Falling back to mens-wearhouse.`);
+            return <TMWFooter data={footerData} />;
     }
   
   }

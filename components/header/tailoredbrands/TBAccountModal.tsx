@@ -14,8 +14,12 @@ const TBAccountModal: React.FC<AccountModalProps> = ({ isOpen, onClose }) => {
   const [isSignIn, setIsSignIn] = useState(true);
 
   useEffect(() => {
-    setMounted(true);
-    return () => setMounted(false);
+    // Use setTimeout to avoid synchronous setState in effect
+    const timer = setTimeout(() => setMounted(true), 0);
+    return () => {
+      clearTimeout(timer);
+      setMounted(false);
+    };
   }, []);
 
   // Lock body scroll when modal is open
@@ -141,7 +145,7 @@ const TBAccountModal: React.FC<AccountModalProps> = ({ isOpen, onClose }) => {
         {isSignIn && (
           <div className={styles.accountModal__footer}>
             <p>
-              Don't have an account?{' '}
+              Don&apos;t have an account?{' '}
               <button
                 type="button"
                 className={styles.accountModal__linkButton}

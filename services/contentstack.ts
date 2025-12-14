@@ -93,6 +93,121 @@ export const getHeaderEntries = async <T>(brandName: string, locale: string, ref
  * @param {* Json RTE path} jsonRtePath
  *
  */
+/**
+ *
+ * Generic function to fetch all entries from a specific content-type
+ * @param {* content-type uid} contentTypeUid
+ * @param {* locale} locale
+ * @param {* reference field name} referenceFieldPath
+ * @param {* Json RTE path} jsonRtePath
+ * @param {* query} query
+ * @param {* personalization SDK} personalizationSDK
+ *
+ */
+export const getEntries = async <T>(
+  contentTypeUid: string,
+  locale: string,
+  referenceFieldPath: string[],
+  jsonRtePath: string[],
+  queryParams: { queryOperator?: string; filterQuery?: any } = {},
+  personalizationSDK?: Sdk | undefined,
+  limit: number = 0
+): Promise<T[]> => {
+  try {
+    let result: { entries: T[] } | null = null;
+    if (!Stack) {
+      throw new Error(
+        '===== No stack initialization found====== \n check environment variables: \
+            CONTENTSTACK_API_KEY, CONTENTSTACK_DELIVERY_TOKEN, CONTENTSTACK_PREVIEW_TOKEN, CONTENTSTACK_PREVIEW_HOST, CONTENTSTACK_ENVIRONMENT'
+      );
+    }
+
+    const entryQuery = Stack.contentType(contentTypeUid)
+      .entry()
+      .locale(locale)
+      .includeFallback()
+      .includeEmbeddedItems()
+      .variants(deserializeVariantIds(personalizationSDK));
+
+    if (referenceFieldPath && referenceFieldPath.length > 0) {
+      for (const path of referenceFieldPath) {
+        entryQuery.includeReference(path);
+      }
+    }
+
+    const query = entryQuery.query();
+
+    if (query) {
+      if (queryParams?.filterQuery?.length > 0 && queryParams.queryOperator === 'or') {
+        const queries = queryParams?.filterQuery?.map((q: any) => {
+          if (typeof Object.values(q)?.[0] === 'string') {
+            return Stack &&
+              Stack.contentType(contentTypeUid)
+                .entry()
+                .query()
+                .equalTo(Object.keys(q)?.[0], Object.values(q)?.[0] as string);
+          }
+          return (
+            Stack &&
+            Stack.contentType(contentTypeUid)
+              .entry()
+              .query()
+              .containedIn(Object.keys(q)?.[0], Object.values(q)?.[0] as any)
+          );
+        });
+        query.queryOperator(QueryOperator.OR, ...queries);
+      }
+
+      if (queryParams?.filterQuery?.key && queryParams?.filterQuery?.value) {
+        query.equalTo(queryParams.filterQuery.key, queryParams.filterQuery.value);
+      }
+
+      if (limit !== 0) query.limit(limit);
+
+      result = (await query
+        .addParams({ include_metadata: 'true' })
+        .addParams({ include_applied_variants: 'true' })
+        .find()) as { entries: T[] };
+
+      const data = result?.entries as EmbeddedItem[];
+
+      if (data && _.isEmpty(data?.[0])) {
+        throw '404 | Not found';
+      }
+
+      if (jsonRtePath && data) {
+        data.forEach((entry) => {
+          jsonToHTML({
+            entry: entry,
+            paths: jsonRtePath,
+          });
+        });
+      }
+
+      data.forEach((entry) => {
+        isEditButtonsEnabled &&
+          addEditableTags(entry, contentTypeUid, true, locale);
+      });
+
+      return data as T[];
+    }
+    return [];
+  } catch (error) {
+    console.error('🚀 ~ getEntries ~ error:', error);
+    throw error;
+  }
+};
+
+/**
+ *
+ * fetches all the entries from specific content-type
+ * @param {* content-type uid} contentTypeUid
+ * @param {* locale} locale
+ * @param {* entryUrl} entryUrl
+ * @param {* reference field name} referenceFieldPath
+ * @param {* Json RTE path} jsonRtePath
+ *
+ */
 export const getEntryByUrl = async <T> (contentTypeUid: string, locale: string, entryUrl: string, referenceFieldPath: string[], jsonRtePath: string[], personalizationSDK?: Sdk | undefined) => {
     try {
         let result: { entries: T[] } | null = null

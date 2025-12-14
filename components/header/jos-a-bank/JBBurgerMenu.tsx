@@ -14,8 +14,12 @@ const JBBurgerMenu: React.FC<BurgerMenuProps> = ({ isOpen, onToggle, children })
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
-    return () => setMounted(false);
+    // Use setTimeout to avoid synchronous setState in effect
+    const timer = setTimeout(() => setMounted(true), 0);
+    return () => {
+      clearTimeout(timer);
+      setMounted(false);
+    };
   }, []);
 
   // Lock body scroll when menu is open

@@ -1,12 +1,13 @@
-import Contentstack from 'contentstack';
+import Contentstack from '@contentstack/delivery-sdk';
 import type { Locale } from './i18n';
 
 // Initialize Contentstack SDK
-export const Stack = Contentstack.Stack({
-    api_key: process.env.NEXT_PUBLIC_CONTENTSTACK_API_KEY || '',
-    delivery_token: process.env.NEXT_PUBLIC_CONTENTSTACK_DELIVERY_TOKEN || '',
-    environment: process.env.NEXT_PUBLIC_CONTENTSTACK_ENVIRONMENT || 'production',
-    region: (process.env.NEXT_PUBLIC_CONTENTSTACK_REGION || 'us') as Contentstack.Region,
+export const Stack = Contentstack.stack({
+    apiKey: process.env.CONTENTSTACK_API_KEY || process.env.NEXT_PUBLIC_CONTENTSTACK_API_KEY || '',
+    deliveryToken: process.env.CONTENTSTACK_DELIVERY_TOKEN || process.env.NEXT_PUBLIC_CONTENTSTACK_DELIVERY_TOKEN || '',
+    environment: process.env.CONTENTSTACK_ENVIRONMENT || process.env.NEXT_PUBLIC_CONTENTSTACK_ENVIRONMENT || 'production',
+    branch: process.env.CONTENTSTACK_BRANCH,
+    host: process.env.CONTENTSTACK_HOST,
 });
 
 // Content types
@@ -20,12 +21,16 @@ export const CONTENT_TYPES = {
 // Fetch header data from Contentstack
 export async function getHeaderData(locale: Locale = 'en', brandName: string) {
     try {
-        const Query = Stack.ContentType(`${CONTENT_TYPES.HEADER}_${brandName}`).Query();
-        Query.language(locale);
-        const result = await Query.toJSON().find();
+        const result = await Stack.contentType(`${CONTENT_TYPES.HEADER}_${brandName}`)
+            .entry()
+            .locale(locale)
+            .includeFallback()
+            .query()
+            .find();
+        
         console.log('result', result);
-        if (result && result[0] && result[0].length > 0) {
-            return result[0][0];
+        if (result && result.entries && result.entries.length > 0) {
+            return result.entries[0];
         }
 
         // Return default structure if no content found
@@ -39,12 +44,15 @@ export async function getHeaderData(locale: Locale = 'en', brandName: string) {
 // Fetch footer data from Contentstack
 export async function getFooterData(locale: Locale = 'en', brandName: string) {
     try {
-      const Query = Stack.ContentType(`${CONTENT_TYPES.FOOTER}_${brandName}`).Query();
-        Query.language(locale);
-        const result = await Query.toJSON().find();
+        const result = await Stack.contentType(`${CONTENT_TYPES.FOOTER}_${brandName}`)
+            .entry()
+            .locale(locale)
+            .includeFallback()
+            .query()
+            .find();
 
-        if (result && result[0] && result[0].length > 0) {
-            return result[0][0];
+        if (result && result.entries && result.entries.length > 0) {
+            return result.entries[0];
         }
 
         // Return default structure if no content found
