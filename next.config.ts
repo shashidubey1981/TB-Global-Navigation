@@ -27,6 +27,16 @@ const nextConfig = {
 
         CONTENTSTACK_VISUAL_BUILDER_MODE: process.env.CONTENTSTACK_VISUAL_BUILDER_MODE ? process.env.CONTENTSTACK_VISUAL_BUILDER_MODE : 'builder' // mode: builder | preview
     },
+    images: {
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'images.contentstack.io',
+                port: '',
+                pathname: '/**',
+            },
+        ],
+    },
     // Enable standalone output for microfrontend deployment
     output: 'standalone',
     // Transpile Contentstack SDK
