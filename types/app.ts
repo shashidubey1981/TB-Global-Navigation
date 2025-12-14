@@ -119,17 +119,36 @@ export interface MegaMenu extends Entry {
     title: string;
     tags: string[];
     sections: MegaMenuSection[];
+    sub_sections?: MegaMenuSection[];
+    feature_cards?: FeatureCardGroup[];
     $?: LivePreviewTypeMapper<MegaMenu>
 }
 
+
 export interface MegaMenuSection extends Entry{
-    title: string;
-    links: MegaMenuLink[];
+    label: string;
+    link?: string;
+    thumbnail: string | null;
     $?: LivePreviewTypeMapper<MegaMenuSection>
 }
-
-export interface MegaMenuLink extends Entry{
-    link_text: string;
-    thumbnail: string | null;
-    $?: LivePreviewTypeMapper<MegaMenuLink>
-}
+export interface FeatureCardGroup {
+    cards: FeatureCard[];
+  }
+  export interface FeatureCard {
+    image: FeatureCardImage;
+    image_alt_text: string;
+    is_thumbnail: boolean;
+    title: string;
+    subtitle: string;
+    cta: FeatureCardCTA;
+  }
+  export interface FeatureCardCTA {
+    text: string;
+    cta_url: string;
+  }
+  
+  export interface FeatureCardImage {
+    title: string;
+    filename: string;
+    url: string;
+  }
