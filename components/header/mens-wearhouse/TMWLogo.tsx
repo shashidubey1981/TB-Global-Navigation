@@ -18,6 +18,7 @@ export default function TMWLogo(data: Partial<App.LogoConfig> = {}) {
               src={logo_image.url}
               alt={alt_text}
               {...$?.logo_image}
+              className={styles.logo__image}
               width={300}
               height={16}
               priority

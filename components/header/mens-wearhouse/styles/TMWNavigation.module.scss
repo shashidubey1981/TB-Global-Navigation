@@ -1,5 +1,9 @@
 .navigation {
   width: 100%;
+  position: relative;
+  z-index: 1001;
+  background: var(--header-bg, #ffffff);
+  display: flex;
 
   &__list {
     display: flex;
@@ -30,9 +34,15 @@
     transition: color 0.2s;
     padding: 0.5rem 0;
     display: block;
+    cursor: pointer;
 
     &:hover {
-      color: var(--accent-color);
+      color: var(--text-primary);
+    }
+
+    &Active {
+      color: var(--text-primary);
+      font-weight: 600;
     }
 
     @media (max-width: 768px) {

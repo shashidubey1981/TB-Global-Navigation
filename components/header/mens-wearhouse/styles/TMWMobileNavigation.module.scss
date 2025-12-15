@@ -1,0 +1,123 @@
+.mobileNav {
+  width: 100%;
+
+  &__backButton {
+    background: none;
+    border: none;
+    color: var(--text-primary, #333);
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0.75rem 0;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: var(--accent-color, #007bff);
+    }
+  }
+
+  &__title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary, #333);
+    margin: 0 0 1.5rem 0;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--border-color, #e0e0e0);
+  }
+
+  &__section {
+    margin-bottom: 2rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__sectionTitle {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary, #333);
+    margin: 0 0 1rem 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color, #e0e0e0);
+  }
+
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  &__listItem {
+    margin: 0;
+    border-bottom: 1px solid var(--border-color, #e0e0e0);
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  &__itemWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0.75rem 0;
+  }
+
+  &__link {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-primary, #333);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex: 1;
+
+    &:hover {
+      color: var(--accent-color, #007bff);
+    }
+  }
+
+  &__expandButton {
+    background: none;
+    border: none;
+    color: var(--text-primary, #333);
+    font-size: 1.5rem;
+    font-weight: 400;
+    padding: 0.5rem 0.75rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease, transform 0.2s ease;
+    min-width: 2.5rem;
+    height: 2.5rem;
+
+    &:hover {
+      color: var(--accent-color, #007bff);
+      transform: translateX(4px);
+    }
+
+    &:active {
+      transform: translateX(2px);
+    }
+  }
+
+  &__thumbnail {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 4px;
+    flex-shrink: 0;
+  }
+}

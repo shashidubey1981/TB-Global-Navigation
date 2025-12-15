@@ -2,6 +2,7 @@
 
 import React from 'react';
 import styles from './styles/TMWAccount.module.scss';
+import Image from 'next/image'
 
 interface AccountProps {
     onClick?: () => void;
@@ -16,7 +17,11 @@ const TMWAccount: React.FC<AccountProps> = ({onClick, label, link}) => {
             onClick={onClick}
             aria-label="Account"
         >
-            <span className={styles.account__icon}>👤</span>
+            <span className={styles.searchLocator__label}>{label}</span>
+            <span className={styles.account__icon}>
+                <Image src="https://image.menswearhouse.com/is/icon/mw_icon_nav_profile.svg" 
+                alt="Account" width={24} height={24} />
+            </span>
         </button>
     );
 };
