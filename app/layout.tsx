@@ -41,7 +41,7 @@ export default async function LocaleLayout({
 
   return (
     <html lang={validLocale}>
-    <body style={{height: '100%'}} className={`${roboto.variable} ${roboto_condensed.variable} ${oswald.variable} ${lora.variable}`} data-fonts={`${roboto.variable}`}>
+    <body className={`${roboto.variable} ${roboto_condensed.variable} ${oswald.variable} ${lora.variable}`} data-fonts={`${roboto.variable}`}>
         <Header locale={validLocale} brandName="mens_wearhouse" />
         <main>{children}</main>
         {/* <Footer locale={validLocale} brandName="mens_wearhouse" /> */}
