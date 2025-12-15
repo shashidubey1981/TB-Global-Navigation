@@ -24,8 +24,10 @@ const TMWHeader: React.FC<HeaderProps> = ({ data }: HeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAccountModalOpen, setIsAccountModalOpen] = useState(false);
   const [activeMegamenuItem, setActiveMegamenuItem] = useState<MainNavigationItem | null>(null);
+  const [headerMobileHeight, setHeaderMobileHeight] = useState(0);
   const navigationWrapperRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLElement>(null);
+  const mobileHeaderRef = useRef<HTMLDivElement>(null);
   
   const handleSearch = (query: string) => {
     console.log('Search query:', query);
@@ -60,6 +62,31 @@ const TMWHeader: React.FC<HeaderProps> = ({ data }: HeaderProps) => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [activeMegamenuItem]);
+
+  // Calculate mobile header height for positioning burger menu
+  useEffect(() => {
+    const updateHeaderHeight = () => {
+      if (mobileHeaderRef.current) {
+        setHeaderMobileHeight(mobileHeaderRef.current.offsetHeight);
+      }
+    };
+
+    updateHeaderHeight();
+    window.addEventListener('resize', updateHeaderHeight);
+    return () => window.removeEventListener('resize', updateHeaderHeight);
+  }, []);
+
+  // Lock body scroll when burger menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMenuOpen]);
 
 
   return (
@@ -101,15 +128,13 @@ const TMWHeader: React.FC<HeaderProps> = ({ data }: HeaderProps) => {
         </div>
 
         {/* Mobile View - 3 Rows */}
-        <div className={styles.header__mobile}>
+        <div className={styles.header__mobile} ref={mobileHeaderRef}>
         <div className={styles.header__row} data-row="promotion">
           <TMWPromotion {...data?.promotion_bar} />
           </div>
           {/* Row 1: Burger + Locator + Logo + Wishlist + Bag */}
           <div className={styles.header__row} data-row="mobile-top">
-            <TMWBurgerMenu isOpen={isMenuOpen} onToggle={() => setIsMenuOpen(!isMenuOpen)}>
-              <TMWMobileNavigation items={data?.main_navigation} isMenuOpen={isMenuOpen} />
-            </TMWBurgerMenu>
+            <TMWBurgerMenu isOpen={isMenuOpen} onToggle={() => setIsMenuOpen(!isMenuOpen)} />
             <TMWSearchLocator location={data?.store_locator?.label} />
             <TMWLogo {...data?.logo} />
             <div className={styles.header__actions}>
@@ -122,6 +147,19 @@ const TMWHeader: React.FC<HeaderProps> = ({ data }: HeaderProps) => {
           <div className={styles.header__row} data-row="mobile-search">
             <TMWSearch onSearch={handleSearch} />
           </div>
+
+          {/* Burger Menu Content */}
+          {isMenuOpen && (
+            <div 
+              className={styles.header__burgerMenuContent}
+              style={{ 
+                top: `${headerMobileHeight}px`,
+                height: `calc(100vh - ${headerMobileHeight}px)`
+              }}
+            >
+              <TMWMobileNavigation items={data?.main_navigation} isMenuOpen={isMenuOpen} />
+            </div>
+          )}
         </div>
       </header>
       <TMWAccountModal isOpen={isAccountModalOpen} onClose={() => setIsAccountModalOpen(false)} />

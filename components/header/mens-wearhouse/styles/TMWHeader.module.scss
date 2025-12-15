@@ -84,6 +84,23 @@
     width: 100%;
     background: var(--header-bg, #ffffff);
   }
+
+  &__burgerMenuContent {
+    position: fixed;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background: var(--header-bg);
+    padding: 2rem 1.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    z-index: 1002;
+    bottom: 0;
+
+    @media (max-width: 768px) {
+      width: 100vw;
+    }
+  }
 }
 
 // Sticky header for mobile
@@ -94,5 +111,9 @@
     z-index: 1000;
     background: var(--header-bg);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    &__mobile {
+      position: relative;
+    }
   }
 }
