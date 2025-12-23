@@ -63,7 +63,6 @@ tb-global-navigation/
 │       └── tailoredbrands/     # Tailored Brands footer components
 ├── lib/                         # Utility libraries
 │   ├── contentstack-service.ts # Contentstack CMS integration
-│   └── i18n.ts                 # Internationalization utilities
 ├── utils/                       # Utility functions
 │   └── fonts.ts                # Font configuration
 ├── types/                       # TypeScript type definitions
@@ -77,7 +76,7 @@ tb-global-navigation/
 ├── tsconfig.json                # TypeScript configuration
 ├── tsconfig.build.json          # Build-specific TypeScript config
 ├── next.config.ts               # Next.js configuration
-├── middleware.ts                # Next.js middleware for i18n
+├── middleware.ts                # Next.js middleware
 └── README.md                    # This file
 ```
 

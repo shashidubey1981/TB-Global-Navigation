@@ -1,5 +1,4 @@
 import Contentstack from '@contentstack/delivery-sdk';
-import type { Locale } from './i18n';
 
 // Initialize Contentstack SDK
 export const Stack = Contentstack.stack({
@@ -19,7 +18,7 @@ export const CONTENT_TYPES = {
 } as const;
 
 // Fetch header data from Contentstack
-export async function getHeaderData(locale: Locale = 'en', brandName: string) {
+export async function getHeaderData(locale: string = 'en', brandName: string) {
     try {
         const result = await Stack.contentType(`${CONTENT_TYPES.HEADER}_${brandName}`)
             .entry()
@@ -42,7 +41,7 @@ export async function getHeaderData(locale: Locale = 'en', brandName: string) {
 }
 
 // Fetch footer data from Contentstack
-export async function getFooterData(locale: Locale = 'en', brandName: string) {
+export async function getFooterData(locale: string = 'en', brandName: string) {
     try {
         const result = await Stack.contentType(`${CONTENT_TYPES.FOOTER}_${brandName}`)
             .entry()
@@ -64,7 +63,7 @@ export async function getFooterData(locale: Locale = 'en', brandName: string) {
 }
 
 // Default header data structure
-function getDefaultHeaderData(locale: Locale = 'en') {
+function getDefaultHeaderData(locale: string = 'en') {
     return {
         promotion_bar: {
             enabled: true,
@@ -107,7 +106,7 @@ function getDefaultHeaderData(locale: Locale = 'en') {
 }
 
 // Default footer data structure
-function getDefaultFooterData(locale: Locale = 'en') {
+function getDefaultFooterData(locale: string = 'en') {
     return {
       links: {
         columns: [

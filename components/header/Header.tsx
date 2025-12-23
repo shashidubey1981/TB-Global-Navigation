@@ -6,7 +6,6 @@ import TBHeader from './tailoredbrands/TBHeader';
 // import { usePersonalization } from '@/context'
 import { getHeaderEntries, navigationReferenceIncludes } from '@/services';
 import { onEntryChange } from '@/config'
-import type { Locale } from '@/lib/i18n';
 import { App } from '@/types';
 import type { EmbeddedItem } from '@contentstack/utils/dist/types/Models/embedded-object';
 
@@ -20,29 +19,22 @@ export default async function Header({ locale, brandName }: HeaderProps) {
     const refUids = [
         ...navigationReferenceIncludes
     ]
-    const webConfigRes = await getHeaderEntries<EmbeddedItem>(brandName, locale, refUids, {});
+    const webConfigRes = await getHeaderEntries<EmbeddedItem>(brandName.toLowerCase(), locale, refUids, {});
     console.log('result', webConfigRes);
     // Extract the first entry from the array and cast to any to allow different header types
     const headerData = webConfigRes?.[0] as any;
     
-    // const [headerData] = await Promise.all([
-    //   getHeaderData(locale as Locale, brandName)
-    // ]);
-    // Fetch header and footer data from Contentstack with locale
-    // const [headerData] = await Promise.all([
-    //   getHeaderData(locale as Locale, brandName)
-    // ]);
 
     switch (brandName) {
-        case 'jos_a_bank':
+        case 'JB':
             return <JBHeader data={headerData} />;;
-        case 'mens_wearhouse':
+        case 'TMW':
             return <TMWHeader data={headerData} />;
-        case 'kg_fashion':
+        case 'KFS':
             return <KFSHeader data={headerData} />;
-        case 'moores':
+        case 'MSP':
             return <MOOHeader data={headerData} />;
-        case 'tailoredbrands':
+        case 'TB':
             return <TBHeader data={headerData} />;
         default: // Tailored Brands
             console.warn(`No header component found for brand: ${brandName}. Falling back to mens_wearhouse.`);

@@ -8,7 +8,7 @@ import { MainNavigationItem, MegaMenu, MegaMenuSection, FeatureCardGroup } from 
 interface TMWMegamenuProps {
   item: MainNavigationItem | null;
   isVisible: boolean;
-  headerRef?: React.RefObject<HTMLElement>;
+  headerRef?: React.RefObject<HTMLElement | null>;
 }
 
 const TMWMegamenu: React.FC<TMWMegamenuProps> = ({ item, isVisible, headerRef }) => {
